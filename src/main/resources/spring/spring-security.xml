@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/security
+	http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+ 	
+ 	<global-method-security secured-annotations="enabled" pre-post-annotations="enabled"/>	
+ 	
+ 	<http pattern="/index/**" security="none" />
+ 	<http pattern="/**/*.css" security="none"/>
+ 	<http pattern="/**/*.png" security="none"/>
+ 	<http pattern="/**/*.ttf" security="none"/>
+ 	<http pattern="/img/*" security="none"/>
+	<http auto-config="true"  use-expressions="true">
+	<intercept-url pattern="/classes/createClass/**" access="hasAnyRole('Admin, Tutor')" /> 
+	<intercept-url pattern="/classes/createClassType/**" access="hasAnyRole('Admin, Tutor')" /> 
+	<intercept-url pattern="/createUser/**" access="hasRole('Admin')" /> 
+	<intercept-url pattern="/addUser/**" access="hasRole('Admin')" />
+	<intercept-url pattern="/" access="isAnonymous()" />
+	<intercept-url pattern="/register" access="permitAll()" /> 
+	<intercept-url pattern="/add" access="permitAll()" /> 
+		<intercept-url pattern="/**" access="isAuthenticated()"/>
+		<form-login
+			login-page="/" 
+			login-processing-url="/signInRequest"
+			always-use-default-target="true"
+			default-target-url="/home"
+			authentication-failure-url="/error"
+			username-parameter="user_email"
+			password-parameter="user_password" />
+		<logout logout-success-url="/" logout-url="/logout" delete-cookies="JSESSIONID"/>
+		
+		<!-- token-validity-seconds = Two weeks -->
+		<remember-me 
+        	token-validity-seconds="1209600" 
+			remember-me-parameter="remember-me" 
+			data-source-ref="DataSource"/>
+	
+	</http>
+ 	  
+ 	  <authentication-manager alias="authenticationManager">
+        <authentication-provider user-service-ref="customUserDetailsService" />
+        <authentication-provider user-service-ref="customUserDetailsService">
+   			<password-encoder ref="passwordEncoder"/>
+		</authentication-provider>
+    </authentication-manager>
+  	
+  	<beans:bean id="customUserDetailsService" class="security.CustomUserDetailsService"/>
+  	
+  	  
+ 	<beans:bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+       <beans:constructor-arg name="strength" value="11" />
+    </beans:bean>
+       	  
+</beans:beans>

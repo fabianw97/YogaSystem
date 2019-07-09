@@ -1,0 +1,73 @@
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #fff;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+  border-color: #25c46c;
+   /*box-shadow: inset 0 1px 1px rgba(0.008, 0.361, 0.275,0.75) 0 0 8px rgba(0.008, 0.361, 0.275,0.6);*/
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.form-signin-heading{
+	text-align: center;
+	color: black;
+}
+
+#registerLink{
+	color: black;
+}
+
+label{
+	color:black;
+}
+
+.form-signin .btn{
+	-webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    
+    color:#000;
+    background-color:#fff;
+    border:1px solid #25c46c;
+}
+.form-signin .btn:hover{
+	
+	background-color:#25c46c;
+	color:white;
+	border:1px solid #25c46c;
+}
+
+.fc-unthemed td.fc-today{
+	background-color:#88d0a8;
+}
