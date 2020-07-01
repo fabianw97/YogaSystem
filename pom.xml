@@ -31,7 +31,7 @@
 		<exclude.tests>**/*SeleniumTest*.java</exclude.tests>
 
 		<!-- Database -->
-		<mysql-connector.version>5.1.31</mysql-connector.version>
+		<mysql-connector.version>8.0.16</mysql-connector.version>
 		<hibernate-core.version>4.3.5.Final</hibernate-core.version>
 
 	</properties>
